@@ -1,8 +1,12 @@
 "use strict";
 
+/////////////////////////////////////////////////////////////
+// User architecture
+/////////////////////////////////////////////////////////////
 class Workout {
   date = new Date();
   id = (Date.now() + "").slice(-10);
+  clicks = 0;
 
   constructor(coords, distance, duration) {
     this.coords = coords; // [lat, lng]
@@ -29,6 +33,10 @@ class Workout {
     this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${
       months[this.date.getMonth()]
     } ${this.date.getDate()}`;
+  }
+
+  click() {
+    this.clicks++;
   }
 }
 
@@ -110,6 +118,7 @@ class App {
 
     // Leaflet library
     this.#map = L.map("map").setView(coords, this.#mapZoomLevel);
+
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -279,6 +288,9 @@ class App {
         duration: 1,
       },
     });
+
+    // Using the public interface
+    workout.click();
   }
 }
 
