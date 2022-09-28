@@ -79,6 +79,7 @@ const inputElevation = document.querySelector(".form__input--elevation");
 
 class App {
   #map;
+  #mapZoomLevel = 13;
   #mapEvent;
   #workouts = [];
 
@@ -88,6 +89,8 @@ class App {
     form.addEventListener("submit", this._newWorkout.bind(this));
     // Changing input types
     inputType.addEventListener("change", this._toggleElevationField);
+    // Move to popup handler
+    containerWorkouts.addEventListener("click", this._moveToPopup.bind(this));
   }
 
   _getPosition() {
@@ -106,7 +109,7 @@ class App {
     const coords = [latitude, longitude];
 
     // Leaflet library
-    this.#map = L.map("map").setView(coords, 13);
+    this.#map = L.map("map").setView(coords, this.#mapZoomLevel);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -259,6 +262,23 @@ class App {
     `;
 
     form.insertAdjacentHTML("afterend", html);
+  }
+
+  _moveToPopup(e) {
+    const workoutEl = e.target.closest(".workout");
+
+    if (!workoutEl) return;
+
+    const workout = this.#workouts.find(
+      (work) => work.id === workoutEl.dataset.id
+    );
+
+    this.#map.setView(workout.coords, this.#mapZoomLevel, {
+      animate: true,
+      pan: {
+        duration: 1,
+      },
+    });
   }
 }
 
