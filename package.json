@@ -1,0 +1,26 @@
+{
+  "name": "map-pro",
+  "version": "1.1.0",
+  "description": "Workout mapping application",
+  "scripts": {
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shohan-pherones/map-pro.git"
+  },
+  "author": "Md. Shohanur Rahman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shohan-pherones/map-pro/issues"
+  },
+  "homepage": "https://github.com/shohan-pherones/map-pro#readme",
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "core-js": "^3.25.5",
+    "leaflet": "^1.9.2"
+  }
+}

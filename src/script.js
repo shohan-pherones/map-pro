@@ -1,4 +1,5 @@
-"use strict";
+import "core-js/stable";
+import "leaflet";
 
 /////////////////////////////////////////////////////////////
 // User architecture
@@ -310,3 +311,5 @@ class App {
 }
 
 const app = new App();
+
+// app.reset();
