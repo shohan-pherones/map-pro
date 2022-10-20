@@ -5,7 +5,7 @@
 1. User can map their workout in the map
 2. Workout data can be stored in the local storage
 
-## Tool: HTML, CSS, JavaScript, Leaflet.js
+## Tools: HTML, CSS, JavaScript, Leaflet.js
 
 ## Live Link: https://map-pro-shohan.netlify.app
 
